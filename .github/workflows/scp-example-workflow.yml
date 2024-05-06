@@ -11,22 +11,14 @@ jobs:
       - name: setup demo
         run: |
           mkdir test
-          touch test/oof.txt
+          touch test/abcd.txt
       - name: Copy folder content recursively to remote
         uses: garygrossgarten/github-action-scp@release
         with:
           local: test
-          remote: scp/directory
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
-      - name: Copy single file to remote
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: test/oof.txt
-          remote: scp/single/readme.md
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
+          remote: /local/bin/incontrol/cmadev/ctm/scripts
+          host: aennl02090boa.linux.shell.com
+          username: suboa
           password: ${{ secrets.PASSWORD }}
         env:
           CI: true
