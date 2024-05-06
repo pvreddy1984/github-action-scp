@@ -20,7 +20,7 @@ jobs:
           username: suboa
           password: ${{ secrets.PASSWORD }}
           port: 22
-          source: "tests/a.txt,tests/b.txt"
+          source: "test/a.txt,test/b.txt"
           target: /local/bin/incontrol/cmadev/ctm/scripts/
         env:
           CI: true
