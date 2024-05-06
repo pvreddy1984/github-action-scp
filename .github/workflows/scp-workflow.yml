@@ -11,14 +11,16 @@ jobs:
       - name: setup demo
         run: |
           mkdir test
-          touch test/abcd.txt
-      - name: Copy folder content recursively to remote
-        uses: garygrossgarten/github-action-scp@release
+          touch test/a.txt
+          touch test/b.txt
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@v0.1.7
         with:
-          local: test
-          remote: /local/bin/incontrol/cmadev/ctm/scripts
           host: aennl02090boa.linux.shell.com
           username: suboa
           password: ${{ secrets.PASSWORD }}
+          port: 22
+          source: "tests/a.txt,tests/b.txt"
+          target: /local/bin/incontrol/cmadev/ctm/scripts/
         env:
           CI: true
